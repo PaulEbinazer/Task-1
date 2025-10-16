@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { FaTree } from "react-icons/fa6";
 import { SiLinktree } from "react-icons/si";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { PiSignIn } from "react-icons/pi";
+import { IoMdClose } from "react-icons/io";
 
-const Nav = () => {
+
+const Nav = ({menu,setMenu}) => {
+  const menuFunc =()=>{
+         setMenu(!menu)
+  }
   return (
     <div className="w-[100%] h-[80px] border border-none  fixed top-[85px] z-50   flex items-center justify-between  shadow-sm bg-white">
      
@@ -49,11 +53,31 @@ const Nav = () => {
         >
           Get a demo
         </button>
-        <i className="lg:hidden sm:flex mt-4 ml-4 text-xl font-bold ">
-          <CiMenuBurger />
-        </i>
+        <i
+  className="lg:hidden sm:flex mt-4 ml-4 text-xl font-bold cursor-pointer relative w-6 h-6"
+  onClick={menuFunc}
+>
+  <span
+    className={`absolute top-0 left-0 w-6 h-0.5 bg-green-900 transition-all duration-300 ${
+      menu ? "rotate-0 translate-y-0" : "rotate-45 translate-y-2"
+    }`}
+  />
+  <span
+    className={`absolute top-2 left-0 w-6 h-0.5 bg-green-900 transition-all duration-300 ${
+      menu ? "opacity-100" : "opacity-0"
+    }`}
+  />
+  <span
+    className={`absolute top-4 left-0 w-6 h-0.5 bg-green-900 transition-all duration-300 ${
+      menu ? "rotate-0 translate-y-0" : "-rotate-45 -translate-y-2"
+    }`}
+  />
+</i>
+
       </div>
     </div>
+
+    
   );
 };
 
